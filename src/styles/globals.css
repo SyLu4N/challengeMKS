@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Brandon';
+  src: url('/fonts/brandon-thin.otf') format('opentype');
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: 'Brandon';
+  src: url('/fonts/brandon.otf') format('opentype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Brandon';
+  src: url('/fonts/brandon-bold.otf') format('opentype');
+  font-weight: 700;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  font-family: var(--font-montserrat);
+}
+
+abbr {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: bold;
+}
+
