@@ -2,6 +2,8 @@
 
 import { createContext, ReactNode, useState, useEffect } from 'react';
 
+import { Cart } from '@/@types/cart';
+
 interface CartProviderProps {
   children: ReactNode;
 }

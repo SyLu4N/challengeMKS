@@ -31,6 +31,12 @@ span {
   font-family: var(--font-montserrat);
 }
 
+body {
+  background-color: #e5e5e5;
+  min-height: 100vh;
+  position: relative;
+}
+
 abbr {
   text-decoration: none;
 }
@@ -38,5 +44,9 @@ abbr {
 h1 {
   font-size: 40px;
   font-weight: bold;
+}
+
+.shadow-cart {
+  box-shadow: 2px 0px 25px rgba(0, 0, 0, 0.4);
 }
 

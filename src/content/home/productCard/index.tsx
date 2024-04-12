@@ -1,8 +1,10 @@
 'use client';
 
 import { Product } from '@/@types/product';
+import { Price } from '@/components/price';
 import { useCart } from '@/hooks/useCart';
 import { Bag } from '@/icons/bag';
+import { formatValue } from '@/utils/formatNumber';
 
 interface ProductCardProps {
   product: Product;
@@ -17,19 +19,24 @@ export function ProductCard({ product }: ProductCardProps) {
     );
 
     const newCart = [...cart];
+
     if (alreadyHaveProduct !== -1) {
       newCart[alreadyHaveProduct].quantity++;
     } else {
-      newCart.push({ id: product.id, quantity: 1 });
+      newCart.push({ ...product, quantity: 1 });
     }
 
     setCart(newCart);
   }
 
   return (
-    <div className="shadow-md inline-flex m-auto w-[218px] justify-between h-[285px] max-h-[285px] bg-white rounded-md gap-2 flex-col">
+    <article className="shadow-md inline-flex m-auto w-[251px] h-[328px] sm:w-[218px] sm:h-[285px] justify-between max-h-[285px] bg-white rounded-md gap-2 flex-col">
       <div className="w-full h-[132px]">
-        <img src={product.photo} className=" m-auto mt-3 h-full select-none" />
+        <img
+          src={product.photo}
+          alt={`Imagem do ${product.name}`}
+          className="m-auto mt-3 h-full select-none"
+        />
       </div>
 
       <div className="px-2 text-letter-500 cursor-default">
@@ -40,9 +47,7 @@ export function ProductCard({ product }: ProductCardProps) {
             </p>
           </abbr>
 
-          <p className="min-w-[64px] h-[26px] px-2 bg-letter-500 inline-flex items-center justify-center text-[15px] font-bold rounded-md text-white leading-3">
-            {product.price}
-          </p>
+          <Price text={`R$${formatValue(Number(product.price))}`} />
         </div>
 
         <p className="text-[12px]">
@@ -59,6 +64,6 @@ export function ProductCard({ product }: ProductCardProps) {
 
         <p className="font-bold text-sm">COMPRAR</p>
       </div>
-    </div>
+    </article>
   );
 }

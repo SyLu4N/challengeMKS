@@ -1,24 +1,30 @@
 'use client';
 
+import { ModalCart } from '@/components/modals/cart';
 import { useCart } from '@/hooks/useCart';
 import { CartIcon } from '@/icons/cart';
+import Link from 'next/link';
 
 export function Header() {
   const { cart } = useCart();
 
   return (
-    <header className="px-[75px] h-[101px] bg-primary-500 flex items-center justify-between">
-      <h1 className="text-white">
-        MKS <span className="font-light text-xl">Sistemas</span>
-      </h1>
+    <header className="px-[25px] h-[48px] sm:px-[75px] sm:h-[101px] bg-primary-500 flex items-center justify-between">
+      <Link href="/" aria-label="Voltar para home">
+        <h1 className="text-white text-[32px] sm:text-[40px]">
+          MKS <span className="font-light text-base sm:text-xl">Sistemas</span>
+        </h1>
+      </Link>
 
-      <abbr title="Meu Carrinho">
-        <div className="flex items-center cursor-pointer transition-all duration-300 justify-center gap-4 p-2 bg-white h-[45px] w-[90px] rounded-md hover:bg-[#eeee]">
-          <CartIcon />
+      <ModalCart>
+        <abbr title="Meu carrinho" aria-label="Abrir carrinho">
+          <div className="flex items-center w-[52px] h-[26px] cursor-pointer transition-all duration-300 justify-center gap-4 p-2 bg-white sm:w-[90px] sm:h-[45px] rounded-md hover:bg-[#eeee]">
+            <CartIcon />
 
-          <p className="font-bold text-lg">{cart.length}</p>
-        </div>
-      </abbr>
+            <p className="font-bold text-xs sm:text-lg">{cart.length}</p>
+          </div>
+        </abbr>
+      </ModalCart>
     </header>
   );
 }
